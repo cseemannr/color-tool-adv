@@ -15,16 +15,17 @@
   </head>
   <body>
     <div class="container">
+      <h2 class="color-picker-header">Color Picker</h2>
       <div class="color-picker-container">
-        <h1>COLOR TOOL</h1>
         <input id="hexInput" type="text" />
         <div id="picker"></div>
       </div>
+      <h2 class="color-converter-header">Color Converter:</h2>
       <div class="color-converter-container">
         <div>
-          <h2>Color Converter:</h2>
-          <!-- <label>Name, hex, rgb, hsl, hwb, cmyk, Ncol:</label> -->
+          <label>Name, hex, rgb, hsl, hwb, cmyk, Ncol:</label>
           <input
+            class="converter-input"
             id="color01"
             type="text"
             value="rgb(255, 255, 255)"
@@ -37,45 +38,40 @@
             <table id="resultTable">
               <tbody>
                 <tr>
-                  <td id="helpname01">Name</td>
-                  <td id="name01">DeepSkyBlue</td>
+                  <td id="helpname01" class="color-type">Name:</td>
+                  <td id="name01" class="color-code">DeepSkyBlue</td>
                 </tr>
                 <tr>
-                  <td id="helprgb01">Rgb</td>
-                  <td id="rgb01">rgb(0, 191, 255)</td>
+                  <td id="helprgb01" class="color-type">Rgb</td>
+                  <td id="rgb01" class="color-code">rgb(0, 191, 255)</td>
                 </tr>
                 <tr>
-                  <td id="helphex01">Hex</td>
-                  <td id="hex01">#00bfff</td>
+                  <td id="helphex01" class="color-type">Hex</td>
+                  <td id="hex01" class="color-code">#00bfff</td>
                 </tr>
                 <tr>
-                  <td id="helphsl01">Hsl</td>
-                  <td id="hsl01">hsl(195, 100%, 50%)</td>
+                  <td id="helphsl01" class="color-type">Hsl</td>
+                  <td id="hsl01" class="color-code">hsl(195, 100%, 50%)</td>
                 </tr>
                 <tr>
-                  <td id="helphwb01">Hwb</td>
-                  <td id="hwb01">hwb(195, 0%, 0%)</td>
+                  <td id="helphwb01" class="color-type">Hwb</td>
+                  <td id="hwb01" class="color-code">hwb(195, 0%, 0%)</td>
                 </tr>
                 <tr>
-                  <td id="helpcmyk01">Cmyk</td>
-                  <td id="cmyk01">cmyk(100%, 25%, 0%, 0%)</td>
+                  <td id="helpcmyk01" class="color-type">Cmyk</td>
+                  <td id="cmyk01" class="color-code">
+                    cmyk(100%, 25%, 0%, 0%)
+                  </td>
                 </tr>
                 <tr>
-                  <td id="helpncol01">Ncol</td>
-                  <td id="ncol01">C25, 0%, 0%</td>
+                  <td id="helpncol01" class="color-type">Ncol</td>
+                  <td id="ncol01" class="color-code">C25, 0%, 0%</td>
                 </tr>
               </tbody>
             </table>
           </div>
         </div>
-        <div>
-          <div id="behindresult01">
-            <div
-              style="height: 100px; background-color: rgb(0, 191, 255)"
-              id="result01"
-            ></div>
-          </div>
-        </div>
+        <div class="color-converter-box" id="result01"></div>
       </div>
     </div>
     <!-- color-picker -->
@@ -99,29 +95,16 @@
           document.getElementById("result01").style.backgroundColor =
             c.toRgbaString();
           if (c.toName() == "") {
-            document.getElementById("name01").style.fontStyle = "italic";
-            document.getElementById("name01").style.color = "#757575";
-            document.getElementById("name01").innerHTML = "no name";
+            document.getElementById("name01").innerHTML = " no name";
           } else {
-            document.getElementById("name01").style.fontStyle = "normal";
-            document.getElementById("name01").style.color = "#000000";
             document.getElementById("name01").innerHTML = c.toName();
           }
-          document.getElementById("helpname01").innerHTML = "Name";
+          document.getElementById("helpname01").innerHTML = "Name: ";
           document.getElementById("hex01").innerHTML = c.toHexString();
-          document.getElementById("helphex01").innerHTML =
-            "<a href='https://www.w3schools.com/colors/colors_hexadecimal.asp?color=" +
-            c.toHexString().substr(1) +
-            "'>Hex</a>";
+          document.getElementById("helphex01").innerHTML = "Hex";
           document.getElementById("cmyk01").innerHTML = c.toCmykString();
-          document.getElementById("helpcmyk01").innerHTML =
-            "<a href='https://www.w3schools.com/colors/colors_cmyk.asp?color=" +
-            c.toCmykStringDecimal() +
-            "'>Cmyk</a>";
-          document.getElementById("helpncol01").innerHTML =
-            "<a href='https://www.w3schools.com/colors/colors_ncol.asp?color=" +
-            c.toNcolStringDecimal() +
-            "'>Ncol</a>";
+          document.getElementById("helpcmyk01").innerHTML = "Cmyk";
+          document.getElementById("helpncol01").innerHTML = "Ncol";
           if (
             (color.indexOf("rgba") > -1 ||
               color.indexOf("hsla") > -1 ||
@@ -142,24 +125,10 @@
             document.getElementById("hsl01").innerHTML = c.toHslString();
             document.getElementById("hwb01").innerHTML = c.toHwbString();
             document.getElementById("ncol01").innerHTML = c.toNcolString();
-            document.getElementById("helprgb01").innerHTML =
-              "<a href='https://www.w3schools.com/colors/colors_rgb.asp?color=" +
-              c.toRgbString() +
-              "'>Rgb</a>";
-            document.getElementById("helphsl01").innerHTML =
-              "<a href='https://www.w3schools.com/colors/colors_hsl.asp?color=" +
-              c.toHslStringDecimal() +
-              "'>Hsl</a>";
-            document.getElementById("helphwb01").innerHTML =
-              "<a href='https://www.w3schools.com/colors/colors_hwb.asp?color=" +
-              c.toHwbStringDecimal() +
-              "'>Hwb</a>";
+            document.getElementById("helprgb01").innerHTML = "Rgb";
+            document.getElementById("helphsl01").innerHTML = "Hsl";
+            document.getElementById("helphwb01").innerHTML = "Hwb";
           }
-
-          document.getElementById("linktocp").innerHTML =
-            "<hr style='border-color:#dfdfdf'><p><a href='Color-picker.php?colorhex=" +
-            c.toHexString().substr(1) +
-            "'>Use this color in the Color Picker</a></p>";
         } else {
           validateColor();
         }
