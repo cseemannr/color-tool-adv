@@ -18,12 +18,11 @@
       <h2 class="color-picker-header">Color Picker</h2>
       <div class="color-picker-container">
         <input id="hexInput" type="text" />
-        <div id="picker"></div>
+        <div onclick="convertColor()" id="picker"></div>
       </div>
-      <h2 class="color-converter-header">Color Converter:</h2>
+      <h2 class="color-converter-header">Color Converter</h2>
       <div class="color-converter-container">
         <div>
-          <label>Name, hex, rgb, hsl, hwb, cmyk, Ncol:</label>
           <input
             class="converter-input"
             id="color01"
@@ -33,12 +32,13 @@
             onchange="validateColor()"
             onkeydown="submitOnEnter(event)"
           />
+          <label>Name, Rgb, Hex, Hsl, Hwb, Cmyk, Ncol:</label>
           <div class="resultStrings">
             <div id="error01"></div>
             <table id="resultTable">
               <tbody>
                 <tr>
-                  <td id="helpname01" class="color-type">Name:</td>
+                  <td id="helpname01" class="color-type">Name</td>
                   <td id="name01" class="color-code">DeepSkyBlue</td>
                 </tr>
                 <tr>
@@ -94,12 +94,15 @@
           document.getElementById("error01").innerHTML = "";
           document.getElementById("result01").style.backgroundColor =
             c.toRgbaString();
+          // document.getElementById("color01").style.backgroundColor =
+          //   c.toRgbaString();
+
           if (c.toName() == "") {
             document.getElementById("name01").innerHTML = " no name";
           } else {
             document.getElementById("name01").innerHTML = c.toName();
           }
-          document.getElementById("helpname01").innerHTML = "Name: ";
+          document.getElementById("helpname01").innerHTML = "Name";
           document.getElementById("hex01").innerHTML = c.toHexString();
           document.getElementById("helphex01").innerHTML = "Hex";
           document.getElementById("cmyk01").innerHTML = c.toCmykString();

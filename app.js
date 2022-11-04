@@ -1,15 +1,13 @@
-var values = document.getElementById("values");
+// var values = document.getElementById("values");
 var hexInput = document.getElementById("hexInput");
-var rgbInput = document.getElementById("rgbInput");
 var input = document.querySelectorAll("input");
+var colorCodes = document.querySelectorAll(".color-code");
 
 var colorPicker = new iro.ColorPicker("#picker", {
   width: 200,
   borderWidth: 2,
   padding: 4,
   borderColor: "#fff",
-  // margin: 16,
-  // layoutDirection: "horizontal",
   layout: [
     {
       component: iro.ui.Wheel,
@@ -61,16 +59,11 @@ var colorPicker = new iro.ColorPicker("#picker", {
 });
 
 colorPicker.on(["color:init", "color:change"], function (color) {
-  // values.innerHTML = [
-  //   `<span>hex:</span> ${color.hexString}`,
-  //   `<span>rgb:</span> ${color.rgbString}`,
-  //   `<span>hsl:</span> ${color.hslString}`,
-  //   `<span>CMYK:</span> cmyk(0%, 0%, 0%, ${color.value}%)`,
-  // ].join("<br>");
-
   hexInput.value = color.hexString;
-
   hexInput.style.backgroundColor = color.hexString;
+
+  //atenção
+  document.getElementById("color01").value = color.rgbString;
 
   if (color.value > 50) {
     hexInput.style.color = "#000";
@@ -81,4 +74,13 @@ colorPicker.on(["color:init", "color:change"], function (color) {
 
 hexInput.addEventListener("change", function () {
   colorPicker.color.hexString = this.value;
+});
+
+colorCodes.forEach((code) => {
+  code.addEventListener("click", function (e) {
+    var codeTarget = e.target;
+    var text = codeTarget.innerText;
+
+    navigator.clipboard.writeText(text);
+  });
 });
