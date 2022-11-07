@@ -119,17 +119,31 @@ label {
   row-gap: 1rem;
   column-gap: 1rem;
   max-width: 62.5rem;
-  padding: 1rem;
+  padding: 2rem;
   grid-template-areas:
     "pickerheader convheader"
     "picker conv";
+}
+
+.sliders-info {
+  position: absolute;
+  text-align: right;
+  bottom: 0;
+  left: -10px;
+  transform: translateX(-100%);
+  font-size: 0.8rem;
+  color: #ccc;
+}
+
+.sliders-info p {
+  margin-top: 18px;
 }
 
 .color-picker-header {
   grid-area: pickerheader;
 }
 .color-picker-container {
-  width: 18.75rem;
+  position: relative;
   justify-self: center;
   grid-area: picker;
 }
@@ -149,17 +163,13 @@ label {
   border: 2px solid white;
 }
 
-@media (max-width: 780px) {
-  .container {
-    width: 100%;
-  }
-
+@media (max-width: 48.75em) {
   h2 {
     font-size: 1.5rem;
   }
 }
 
-@media (max-width: 650px) {
+@media (max-width: 45em) {
   .container {
     grid-template-columns: 1fr;
     grid-template-rows: min-content min-content min-content min-content;

@@ -62,7 +62,6 @@ colorPicker.on(["color:init", "color:change"], function (color) {
   hexInput.value = color.hexString;
   hexInput.style.backgroundColor = color.hexString;
 
-  //atenção
   document.getElementById("color01").value = color.rgbString;
 
   if (color.value > 50) {
